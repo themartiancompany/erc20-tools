@@ -1,8 +1,8 @@
-{ "name": "evm-contracts-tools",
+{ "name": "erc20-tools",
   "version":
-    "0.0.21",
+    "0.0.1",
   "description":
-    "JavaScript programs and libraries to enable seamless development of native computer applications designed to interact with Ethereum Virtual Machine-compatible networks.",
+    "JavaScript programs and libraries to enable seamless development of native computer applications designed to interact with Ethereum *RC-20 tokens (ERC-20, BRC-20, etc.) on Ethereum Virtual Machine-compatible networks.",
   "funding": {
     "type":
       "patreon",
@@ -16,18 +16,13 @@
     "AUTHORS.rst",
     "COPYING",
     "README.md",
-    "evm-contract-call",
-    "evm-contract-call.js",
-    "evm-contract-call.webpack.config.js",
-    "fs-worker.js",
+    "dist",
+    "erc20-tools",
     "fs-worker.webpack.config.js",
-    "index.html",
-    "libevm-contract-call",
-    "libevm-contract-call.webpack.config.js",
     "lib",
-    "libevm-contracts-tools",
     "package.json",
-    "serve.json"
+    "serve.json",
+    "webpack.config.js"
   ],
   "keywords": [
     "ur",
@@ -92,24 +87,16 @@
     "yargs":
       "18.0.0"
   },
-  "overrides": {
-    "evm-contracts-tools":
-      "^0.0.20"
-  },
   "type":
     "commonjs",
   "main":
-    "libevm-contracts-tools",
+    "erc20-tools",
   "bin":
     { 
-      "evm-contract-call":
-        "evm-contract-call",
-      "evm-contract-call.js":
-        "evm-contract-call",
-      "evm-contract-call-dynamic.js":
-        "lib/evm-contract-call-dynamic",
-      "evm-contract-call-static.js":
-        "lib/evm-contract-call-static" },
+      "token-send":
+        "lib/token-send",
+      "erc20-token-send":
+        "lib/token-send" },
   "scripts": {
     "build-fs-worker":
       "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details",
