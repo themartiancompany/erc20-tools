@@ -76,14 +76,8 @@
       "^0.1.101",
     "ethers":
       "^6.13.2",
-    "evm-chains-info":
-      "^0.0.18",
-    "evm-transactions-tools":
-      "^0.0.8",
-    "evm-wallet.js":
-      "^0.0.31",
-    "libevm":
-      "^0.0.15",
+    "evm-contracts-tools":
+      "^0.0.21",
     "yargs":
       "18.0.0"
   },
@@ -99,9 +93,9 @@
         "lib/token-send" },
   "scripts": {
     "build-fs-worker":
-      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details",
+      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details && mv 'fs-worker.js' 'dist/erc20-tools'",
     "build-lib":
-      "npx webpack --mode 'production' --config 'libevm-contracts-tools.webpack.config.cjs' --stats-error-details",
+      "npx webpack --mode 'production' --config 'webpack.config.cjs' --stats-error-details && mv 'erc20-tools.js' 'dist/erc20-tools'",
     "build":
       "npm run lint && npm run build-fs-worker && npm run build-lib",
     "lint":
