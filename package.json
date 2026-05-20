@@ -76,6 +76,8 @@
       "^0.1.101",
     "ethers":
       "^6.13.2",
+    "erc20-contracts":
+      "^0.0.3",
     "evm-contracts-tools":
       "^0.0.21",
     "yargs":

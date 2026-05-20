@@ -1,3 +1,6 @@
 [submodule "man"]
 	path = man
-	url = https://github.com/themartiancompany/evm-contracts-tools-man
+	url = https://github.com/themartiancompany/erc20-tools-man
+[submodule "contracts"]
+	path = contracts
+	url = https://github.com/themartiancompany/erc20-contracts

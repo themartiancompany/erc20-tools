@@ -22,7 +22,7 @@
    If not, see <https://www.gnu.org/licenses/>.
 
 ============================
-EVM Wallet Authors
+ERC-20 Tools Authors
 ============================
 
 * Pellegrino Prevete
