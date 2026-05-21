@@ -336,9 +336,25 @@ function
   let
     _line,
     _text;
+  if ( typeof(
+         _exit_code) == "undefined" ||
+       _exit_code == "" ) {
+    _exit_code =
+      0;
+  }
+  const
+    _argv =
+      _argv_get();
+  const
+    _program =
+      _basename(
+        _argv[
+          "$0"]);
   _text = [
+    "Send ERC-20 tokens.",
+    ""
     "Usage:",
-    "  token-send",
+    `  ${_program}`,
     "    <quiet>",
     "    <retries-max>",
     "    <call-timeout>",
@@ -380,11 +396,14 @@ function
     "  <token-address>                  Address of the token contract.",
     "",
     "  <token-abi-path>                 Token ABI path.",
+    `                                   Default: ${token_abi_path}`,
     "",
     "  <token-bytecode-path>            Path for the token bytecode.",
+    `                                   Default: ${token_bytecode_path}`,
     "",
     "  <token-compiler-output-path>     Path for the token compiler",
     "                                   output path (the hardhat artifact).",
+    `                                   Default: ${token_compiler_output_path}`,
     "",
     "  <measure-unit>                   Measure unit for the transaction",
     "                                   value. It can be 'wei' or 'ether'",
@@ -473,6 +492,7 @@ function
       }
       if ( _value == "-h" ||
            _value == "--help" ) {
+        _overrides_set();
         quiet =
           "n";
         _usage(
@@ -480,6 +500,7 @@ function
       }
   });
   if ( target_recipient == "" ) {
+    _overrides_set();
     quiet =
       "n";
     _msg =
@@ -491,6 +512,7 @@ function
       1);
   }
   if ( token_address == "" ) {
+    _overrides_set();
     quiet =
       "n";
     _msg =
@@ -514,6 +536,7 @@ function
   }
   if ( target_amount == "0" ||
        target_amount == 0 ) {
+    _overrides_set();
     quiet =
       "n";
     _msg =
