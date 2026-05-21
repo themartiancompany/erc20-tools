@@ -32,16 +32,16 @@
     "evmfs"
   ],
   "homepage":
-    "https://github.com/themartiancompany/evm-contracts-tools",
+    "https://github.com/themartiancompany/erc20-tools",
   "bugs": {
     "url":
-      "https://github.com/themartiancompany/evm-contracts-tools/issues"
+      "https://github.com/themartiancompany/erc20-tools/issues"
   },
   "repository": {
     "type":
       "git",
     "url":
-      "git+https://github.com/themartiancompany/evm-contracts-tools.js.git"
+      "git+https://github.com/themartiancompany/erc20-tools.git"
   },
   "license":
     "AGPL-3.0-or-later",
@@ -77,7 +77,7 @@
     "ethers":
       "^6.13.2",
     "erc20-contracts":
-      "^0.0.3",
+      "^0.0.4",
     "evm-contracts-tools":
       "^0.0.25",
     "yargs":

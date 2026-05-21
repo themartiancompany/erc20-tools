@@ -83,6 +83,14 @@ const
      _contract_run */
 _contract_run =
   _evm_contracts_tools_module._contract_run;
+const
+  _erc20_contracts_module =
+    require(
+      "erc20-contracts");
+/* global
+     _data_get */
+_data_get =
+  _erc20_contracts_module._data_get;
 
 function
   _global_variables() {
@@ -552,11 +560,42 @@ async function
 
 function
   _overrides_set() {
-  if ( call_timeout == "" ) {
+  if ( typeof(
+         token_abi_path) == "undefined" ||
+       token_abi_path == "" ) {
+    token_abi_path =
+      _data_get(
+        "Token",
+        "abi",
+        "path");
+  }
+  if ( typeof(
+         token_bytecode_path) == "undefined" ||
+       token_bytecode_path == "" ) {
+    token_bytecode_path =
+      _data_get(
+        "Token",
+        "bytecode",
+        "path");
+  }
+  if ( typeof(
+         token_compiler_output_path) == "undefined" ||
+       token_compiler_output_path == "" ) {
+    token_compiler_output_path =
+      _data_get(
+        "Token",
+        "compiler-output",
+        "path");
+  }
+  if ( typeof(
+         call_timeout) == "undefined" ||
+       call_timeout == "" ) {
     call_timeout =
       300000;
   }
-  if ( measure_unit == "" ) {
+  if ( typeof(
+         measure_unit) == "undefined" ||
+       measure_unit == "" ) {
     measure_unit =
       "ether";
   }
