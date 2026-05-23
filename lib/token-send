@@ -291,7 +291,7 @@ async function
         _amount);
   }
   _amount =
-    Number(
+    BigInt(
       _amount);
   _wallet_password =
     "";
@@ -317,7 +317,7 @@ async function
   ];
   _token_send_call_opts =
     _token_send_call_base_opts.concat(
-      [_transfer_args]);
+      [ _transfer_args ]);
   try {
     _receipt = await
       _token_send_call(
