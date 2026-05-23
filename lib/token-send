@@ -184,12 +184,13 @@ function
 async function
   _token_send_call(
     _contract_run_opts) {
+  let
+    _tx;
   try {
-    const
-      _tx =
-        await _contract_run.apply(
-          null,
-          _contract_run_opts);
+    _tx = await
+      _contract_run.apply(
+        null,
+        _contract_run_opts);
   } catch(
       _error) {
     const
@@ -237,7 +238,36 @@ async function
     _token_send_call_opts,
     _transfer_args,
     _wallet_password;
-  if ( _amount == "" ) {
+  if ( typeof(
+         _token_abi_path) == "undefined" ||
+       _token_abi_path == "" ) {
+    _token_abi_path =
+      _data_get(
+        "Token",
+        "abi",
+        "path");
+  }
+  if ( typeof(
+         _token_bytecode_path) == "undefined" ||
+       _token_bytecode_path == "" ) {
+    _token_bytecode_path =
+      _data_get(
+        "Token",
+        "bytecode",
+        "path");
+  }
+  if ( typeof(
+         _token_compiler_output_path) == "undefined" ||
+       _token_compiler_output_path == "" ) {
+    _token_compiler_output_path =
+      _data_get(
+        "Token",
+        "compiler-output",
+        "path");
+  }
+  if ( typeof(
+         _amount) == "undefined" ||
+       _amount == "" ) {
     _msg =
       "Amount must be a number greater than zero.";
     _msg_error(
@@ -271,6 +301,7 @@ async function
     _wallet_seed_path,
     _wallet_password,
     _api_key_path,
+    "",
     0,
     "ether",
     _target_network,
