@@ -255,6 +255,11 @@ async function
   _call_timeout =
     Number(
       _call_timeout);
+ if ( _measure_unit == "ether" ) {
+    _amount =
+      _ether_to_wei(
+        _amount);
+  }
   _amount =
     Number(
       _amount);
@@ -275,11 +280,6 @@ async function
     _token_compiler_output_path,
     "transfer"
   ];
- if ( _measure_unit == "ether" ) {
-    _amount =
-      _ether_to_wei(
-        _amount);
-  }
   _transfer_args = [
     _target_recipient,
     _amount
