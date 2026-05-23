@@ -186,8 +186,8 @@ async function
     _contract_run_opts) {
   try {
     const
-      _tx = await
-        _contract_run.apply(
+      _tx =
+        await _contract_run.apply(
           null,
           _contract_run_opts);
   } catch(
