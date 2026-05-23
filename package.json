@@ -79,7 +79,7 @@
     "erc20-contracts":
       "^0.0.5",
     "evm-contracts-tools":
-      "^0.0.28",
+      "^0.0.30",
     "yargs":
       "18.0.0"
   },
