@@ -624,6 +624,54 @@ async function
 
 function
   _overrides_set() {
+  let
+    _info_get,
+    _target_network_type;
+  _info_get =
+    false;
+  _target_network_type =
+    typeof(
+      target_network);
+  if ( _target_network_type == "undefined" ||
+       target_network == "" ) {
+    target_network = 100;
+    _target_network_type =
+      typeof(
+        target_network);
+  }
+  if ( _target_network_type == "number" ) {
+    _info_get =
+      true;
+  }
+  else if ( _target_network_type == "string" ) {
+    if ( target_network.startsWith(
+           "https://") ) {
+      _info_get =
+        true;
+    }
+  }
+  else {
+    const
+      _msg =
+        `Unknown type '${_target_network_type}' ` +
+        `for network variable.`;
+    _msg_error(
+      _msg,
+      1);
+  }
+  if ( _info_get ) {
+    const
+      _libevm_module =
+        require(
+          "libevm");
+    const
+      _rpc_get =
+        _libevm_module._rpc_get;
+    target_network =
+      _rpc_get(
+        [ target_network ])[
+        target_network];
+  }
   if ( typeof(
          token_abi_path) == "undefined" ||
        token_abi_path == "" ) {
