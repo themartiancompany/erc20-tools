@@ -1,6 +1,6 @@
 { "name": "erc20-tools",
   "version":
-    "0.0.11",
+    "0.0.13",
   "description":
     "JavaScript programs and libraries to enable seamless development of native computer applications designed to interact with Ethereum *RC-20 tokens (ERC-20, BRC-20, etc.) on Ethereum Virtual Machine-compatible networks.",
   "funding": {
@@ -55,11 +55,11 @@
   },
   "devDependencies": {
     "crash-js-webpack":
-      "^0.0.6",
+      "^0.0.31",
     "flatted":
       "^3.2.9",
     "eslint":
-      "^10.0.3",
+      "^10.3.0",
     "globals":
       "^17.3.0",
     "@eslint/js":
@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "crash-js":
-      "^0.1.111",
+      "^0.11.1",
     "ethers":
       "^6.13.2",
     "erc20-contracts":
@@ -82,6 +82,8 @@
       "^0.0.32",
     "libevm":
       "^0.0.26",
+    "ws":
+      "^8.21.0",
     "yargs":
       "18.0.0"
   },
@@ -104,10 +106,10 @@
       "npm run lint && npm run build-fs-worker && npm run build-lib",
     "lint":
       "npx eslint .",
-    "publish-pnm":
+    "publish-npm":
       "npm run build && npm publish --access public",
     "start":
-      "npx safely-serve 'dist/erc20-tools' --port 3000 --https --no-cache",
+      "npx safely-serve 'dist/erc20-tools'",
     "test":
       "echo \"Error: no test specified\" && exit 1"
   }
