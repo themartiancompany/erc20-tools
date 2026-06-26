@@ -29,14 +29,14 @@ import { defineConfig } from "eslint/config";
 
 const
   _project =
-    "evm-contracts-tools";
+    "erc20-tools";
 
 const
   _ignores = [
     "build/**",
     "dist/**",
     "node_modules/**",
-    "erc20-tools.js",
+    `${_project}.js`,
     "eslint.config.js",
     "fs-worker.js",
     "man/**"
@@ -53,7 +53,8 @@ export default defineConfig([
          "error" },
    files:
      [ "**/*.{js,mjs,cjs}",
-       `**/erc20-tools`,
+       `**/${_project}`,
+       `**/lib${_project}`,
        `**/lib/*`
      ],
    plugins:
@@ -74,7 +75,8 @@ export default defineConfig([
          "error" },
    files:
      [ "**/*.js",
-       `**/erc20-tools`,
+       `**/${_project}`,
+       `**/lib${_project}`,
        `**/lib/*`,
      ],
    languageOptions:
