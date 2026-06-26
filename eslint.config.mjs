@@ -52,7 +52,7 @@ export default defineConfig([
        "prefer-const":
          "error" },
    files:
-     [ "**/*js,mjs,cjs}",
+     [ "**/*.{js,mjs,cjs}",
        `**/erc20-tools`,
        `**/lib/*`
      ],
