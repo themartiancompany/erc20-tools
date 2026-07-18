@@ -92,6 +92,10 @@ module.exports = {
   },
   resolve: {
     alias: {
+      "erc20-tools":
+        _path.resolve(
+          __dirname,
+          "erc20-tools"),
       "node:fs":
         _path.resolve(
           __dirname,

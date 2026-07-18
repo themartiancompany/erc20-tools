@@ -1,6 +1,6 @@
 { "name": "erc20-tools",
   "version":
-    "0.0.16",
+    "0.0.18",
   "description":
     "JavaScript programs and libraries to enable seamless development of native computer applications designed to interact with Ethereum *RC-20 tokens (ERC-20, BRC-20, etc.) on Ethereum Virtual Machine-compatible networks.",
   "funding": {
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "crash-js-webpack":
-      "^0.0.31",
+      "^0.0.41",
     "flatted":
       "^3.2.9",
     "eslint":
@@ -73,15 +73,15 @@
   },
   "dependencies": {
     "crash-js":
-      "^0.11.1",
+      "^0.11.111111111111",
     "ethers":
       "^6.13.2",
     "erc20-contracts":
       "^0.0.5",
     "evm-contracts-tools":
-      "^0.0.42",
+      "^0.0.43",
     "libevm":
-      "^0.0.29",
+      "^0.0.30",
     "ws":
       "^8.21.0",
     "yargs":
@@ -89,7 +89,7 @@
   },
   "overrides": {
     "erc20-tools":
-      "npm:erc20-tools@^0.0.15"
+      "./erc20-tools"
   },
   "type":
     "commonjs",
