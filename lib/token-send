@@ -525,7 +525,7 @@ function
     _exit_code);
 }
 
-function 
+async function 
   _cmdline_parse() {
   let
     _msg;
@@ -624,7 +624,7 @@ function
       }
       if ( _value == "-h" ||
            _value == "--help" ) {
-        _overrides_set();
+        await _overrides_set();
         _global[
           "quiet"] =
           "n";
@@ -633,7 +633,7 @@ function
       }
   });
   if ( target_recipient == "" ) {
-    _overrides_set();
+    await _overrides_set();
     _global[
       "quiet"] =
       "n";
@@ -646,7 +646,7 @@ function
       1);
   }
   if ( token_address == "" ) {
-    _overrides_set();
+    await _overrides_set();
     _global[
       "quiet"] =
       "n";
@@ -672,7 +672,7 @@ function
   }
   if ( target_amount == "0" ||
        target_amount == 0 ) {
-    _overrides_set();
+    await _overrides_set();
     _global[
       "quiet"] =
       "n";
@@ -718,7 +718,7 @@ async function
   }
 }
 
-function
+async function
   _overrides_set() {
   let
     _info_get,
@@ -811,8 +811,8 @@ if ( await _cmdline_check(
      await _cmdline_check(
        "erc20-token-send") ) {
   _global_variables();
-  _cmdline_parse();
-  _overrides_set();
+  await _cmdline_parse();
+  await _overrides_set();
   _config_show();
   app_opts = [
     retries_max,
