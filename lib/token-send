@@ -528,6 +528,7 @@ function
 async function 
   _cmdline_parse() {
   let
+    _help_display,
     _msg;
   const
     _global =
@@ -535,6 +536,8 @@ async function
   _global[
     "quiet"] =
     "y";
+  _help_display =
+    false;
   _argv.forEach(
     function (
       _value,
@@ -624,14 +627,18 @@ async function
       }
       if ( _value == "-h" ||
            _value == "--help" ) {
-        await _overrides_set();
-        _global[
-          "quiet"] =
-          "n";
-        _usage(
-          0);
+        _help_display =
+          true;
       }
   });
+  if ( _help_display ) {
+    await _overrides_set();
+    _global[
+      "quiet"] =
+      "n";
+    _usage(
+      0);
+  }
   if ( target_recipient == "" ) {
     await _overrides_set();
     _global[
