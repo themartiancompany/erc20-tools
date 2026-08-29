@@ -775,51 +775,41 @@ function
     "target",
     "network",
     _target_network);
-  if ( typeof(
-         token_abi_path) == "undefined" ||
-       token_abi_path == "" ) {
-    token_abi_path =
-      _data_get(
-        "Token",
-        "abi",
-        "path");
-  }
-  if ( typeof(
-         token_bytecode_path) == "undefined" ||
-       token_bytecode_path == "" ) {
-    token_bytecode_path =
-      _data_get(
-        "Token",
-        "bytecode",
-        "path");
-  }
-  if ( typeof(
-         token_compiler_output_path) == "undefined" ||
-       token_compiler_output_path == "" ) {
-    token_compiler_output_path =
-      _data_get(
-        "Token",
-        "compiler-output",
-        "path");
-  }
-  if ( typeof(
-         call_timeout) == "undefined" ||
-       call_timeout == "" ) {
-    call_timeout =
-      300000;
-  }
-  if ( typeof(
-         measure_unit) == "undefined" ||
-       measure_unit == "" ) {
-    measure_unit =
-      "ether";
-  }
+  _override_set(
+    "token_abi",
+    "path",
+    _data_get(
+      "Token",
+      "abi",
+      "path"));
+  _override_set(
+    "token_bytecode",
+    "path",
+    _data_get(
+      "Token",
+      "bytecode",
+      "path"));
+  _override_set(
+    "token_compiler_output",
+    "path",
+    _data_get(
+      "Token",
+      "compiler_output",
+      "path"));
+  _override_set(
+    "call",
+    "timeout",
+    300000);
+  _override_set(
+    "measure",
+    "unit",
+    "ether");
 }
 
-if ( _cmdline_check(
-       "token-send") == true ||
-     _cmdline_check(
-       "erc20-token-send") == true ) {
+if ( await _cmdline_check(
+       "token-send") ||
+     await _cmdline_check(
+       "erc20-token-send") ) {
   _global_variables();
   _cmdline_parse();
   _overrides_set();
@@ -843,7 +833,11 @@ if ( _cmdline_check(
     app_opts);
 }
 
-module.exports = {
-  _token_send:
-    _token_send
+export {
+  _token_send
 };
+
+// module.exports = {
+//   _token_send:
+//     _token_send
+// };
