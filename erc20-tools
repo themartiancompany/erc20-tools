@@ -34,7 +34,7 @@
 
 const
   _token_send_module =
-    require(
+    await import(
       "./lib/token-send");
 /* global
      _token_send */
@@ -42,7 +42,11 @@ const
   _token_send =
     _token_send_module._token_send;
 
-module.exports = {
-  _token_send:
-    _token_send
+export {
+  _token_send
 };
+
+// module.exports = {
+//   _token_send:
+//     _token_send
+// };

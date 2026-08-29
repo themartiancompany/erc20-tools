@@ -26,13 +26,13 @@
 
 const
   _libcrash =
-    require(
-      "crash-js");
+    await import(
+      "libcrash-js");
 /* global
-     _argv_get */
+     _argv */
 const
-  _argv_get =
-    _libcrash._argv_get;
+  _argv =
+    _libcrash._argv;
 /* global
      _basename */
 const
@@ -54,6 +54,16 @@ const
   _file_write =
     _libcrash._file_write;
 /* global
+     _get */
+const
+  _get =
+    _libcrash._get;
+/* global
+     _global_get */
+const
+  _global_get =
+    _libcrash._global_get;
+/* global
      _json_display */
 const
   _json_display =
@@ -68,13 +78,30 @@ const
 const
 _msg_error =
   _libcrash._msg_error;
+/* global
+     _override_set */
 const
-  { ethers } =
-    require(
+  _override_set =
+    _libcrash._override_set;
+/* global
+     _require */
+const
+  _require =
+    _libcrash._require;
+/* global
+     _set */
+const
+  _set =
+    _libcrash._set;
+const
+  _ethers_module =
+    await _require(
       "ethers");
+/* global
+     _ethers */
 const
   _ethers =
-    ethers;
+    _ethers_module.ethers;
 /* global
      _wei_to_ether */
 const
@@ -87,7 +114,7 @@ const
     _ethers.parseUnits;
 const
   _evm_contracts_tools_module =
-    require(
+    await import(
       "evm-contracts-tools");
 /* global
      _contract_run */
@@ -95,7 +122,7 @@ _contract_run =
   _evm_contracts_tools_module._contract_run;
 const
   _erc20_contracts_module =
-    require(
+    await _require(
       "erc20-contracts");
 /* global
      _data_get */
@@ -107,77 +134,109 @@ function
   /* global
        app_name:
          writable */
-  app_name =
-    "token-send";
+  _set(
+    "app",
+    "name",
+    "token-send");
   /* global
        retries_max:
          writable */
-  retries_max =
-    "";
+  _set(
+    "retries",
+    "max",
+    "");
   /* global
        call_timeout:
          writable */
-  call_timeout =
-    "";
+  _set(
+    "call",
+    "timeout",
+    "");
   /* global
        wallet_seed_path:
          writable */
-  wallet_seed_path =
-    "";
+  _set(
+    "wallet_seed",
+    "path",
+    "");
   /* global
        api_key_path:
          writable */
-  api_key_path =
-    "";
+  _set(
+    "api_key",
+    "path",
+    "");
   /* global
        target_network:
          writable */
-  target_network =
-    "";
+  _set(
+    "target",
+    "network",
+    "");
   /* global
        token_address:
          writable */
-  token_address =
-    "";
+  _set(
+    "token",
+    "address",
+    "");
   /* global
        token_abi_path:
          writable */
-  token_abi_path =
-    "";
+  _set(
+    "token_abi",
+    "path",
+    "");
   /* global
        token_bytecode_path:
          writable */
-  token_bytecode_path =
-    "";
+  _set(
+    "token_bytecode",
+    "path",
+    "");
   /* global
        token_compiler_output_path:
          writable */
-  token_compiler_output_path =
-    "";
+  _set(
+    "token_compiler_output",
+    "path",
+    "");
   /* global
        measure_unit:
          writable */
-  measure_unit =
-    "";
+  _set(
+    "measure",
+    "unit",
+    "");
   /* global
        target_recipient:
          writable */
-  target_recipient =
-    "";
+  _set(
+    "target",
+    "recipient",
+    "");
   /* global
        target_amount:
          writable */
-  target_amount =
-    "";
+  _set(
+    "target",
+    "amount",
+    "");
   /* global
        receipt_file_path:
          writable */
-  receipt_file_path =
-    "";
+  _set(
+    "receipt_file",
+    "path",
+    "");
+  const
+    _global =
+      _global_get();
   /* global
        quiet:
          writable */
-  quiet =
+  _global[
+    "quiet"] =
     "";
 }
 
@@ -349,6 +408,11 @@ function
   let
     _line;
   const
+    _program =
+      _basename(
+        _argv[
+          "1"]);
+  const
     _text = [
     `          Maximum retries: ${retries_max}`,
     `             Call timeout: ${call_timeout}`,
@@ -384,13 +448,10 @@ function
       0;
   }
   const
-    _argv =
-      _argv_get();
-  const
     _program =
       _basename(
         _argv[
-          "$0"]);
+          "1"]);
   _text = [
     "Send ERC-20 tokens.",
     "",
@@ -468,73 +529,104 @@ function
   _cmdline_parse() {
   let
     _msg;
-  quiet = 
+  const
+    _global =
+      _global_get();
+  _global[
+    "quiet"] =
     "y";
-  process.argv.forEach(
+  _argv.forEach(
     function (
       _value,
-      _index,
-      _array) {
+      _index) {
       if ( _index == 2 ) {
-        quiet =
+        _global[
+          "quiet"] =
           _value;
       }
       if ( _index == 3 ) {
-        retries_max =
-          _value;
+        _set(
+          "retries",
+          "max",
+          _value);
       }
       if ( _index == 4 ) {
-        call_timeout =
-          _value;
+        _set(
+          "call",
+          "timeout",
+          _value);
       }
       if ( _index == 5 ) {
-        wallet_seed_path =
-          _value;
+        _set(
+          "wallet_seed",
+          "path",
+          _value);
       }
       if ( _index == 6 ) {
-        api_key_path =
-          _value;
+        _set(
+          "api_key",
+          "path",
+          _value);
       }
       if ( _index == 7 ) {
-        target_network =
-          _value;
+        _set(
+          "target",
+          "network",
+          _value);
       }
       if ( _index == 8 ) {
-        token_address =
-          _value;
+        _set(
+          "token",
+          "address",
+          _value);
       }
       if ( _index == 9 ) {
-        token_abi_path =
-          _value;
+        _set(
+          "token_abi",
+          "path",
+          _value);
       }
       if ( _index == 10 ) {
-        token_bytecode_path =
-          _value;
+        _set(
+          "token_bytecode",
+          "path",
+          _value);
       }
       if ( _index == 11 ) {
-        token_compiler_output_path =
-          _value;
+        _set(
+          "token_compiler_output",
+          "path",
+          _value);
       }
       if ( _index == 12 ) {
-        measure_unit =
-          _value;
+        _set(
+          "measure",
+          "unit",
+          _value);
       }
       if ( _index == 13 ) {
-        receipt_file_path =
-          _value;
+        _set(
+          "receipt_file",
+          "path",
+          _value);
       }
       if ( _index == 14 ) {
-        target_recipient =
-          _value;
+        _set(
+          "target",
+          "recipient",
+          _value);
       }
       if ( _index == 15 ) {
-        target_amount =
-          _value;
+        _set(
+          "target",
+          "amount",
+          _value);
       }
       if ( _value == "-h" ||
            _value == "--help" ) {
         _overrides_set();
-        quiet =
+        _global[
+          "quiet"] =
           "n";
         _usage(
           0);
@@ -542,7 +634,8 @@ function
   });
   if ( target_recipient == "" ) {
     _overrides_set();
-    quiet =
+    _global[
+      "quiet"] =
       "n";
     _msg =
        "No input recipient.";
@@ -554,7 +647,8 @@ function
   }
   if ( token_address == "" ) {
     _overrides_set();
-    quiet =
+    _global[
+      "quiet"] =
       "n";
     _msg =
        "No token address specified.";
@@ -565,7 +659,8 @@ function
       1);
   }
   if ( target_amount == "" ) {
-    quiet =
+    _global[
+      "quiet"] =
       "n";
     _msg =
        "No amount specified.";
@@ -578,7 +673,8 @@ function
   if ( target_amount == "0" ||
        target_amount == 0 ) {
     _overrides_set();
-    quiet =
+    _global[
+      "quiet"] =
       "n";
     _msg =
        "Amount specified is zero.";
@@ -629,22 +725,27 @@ function
     _target_network_type;
   _info_get =
     false;
+  const
+    _target_network =
+      _get(
+        "target",
+        "network");
   _target_network_type =
     typeof(
-      target_network);
+      _target_network);
   if ( _target_network_type == "undefined" ||
-       target_network == "" ) {
-    target_network = 100;
+       _target_network == "" ) {
+    _target_network = 100;
     _target_network_type =
       typeof(
-        target_network);
+        _target_network);
   }
   if ( _target_network_type == "number" ) {
     _info_get =
       true;
   }
   else if ( _target_network_type == "string" ) {
-    if ( ! target_network.startsWith(
+    if ( ! _target_network.startsWith(
            "https://") ) {
       _info_get =
         true;
@@ -655,23 +756,25 @@ function
       _msg =
         `Unknown type '${_target_network_type}' ` +
         `for network variable.`;
-    _msg_error(
-      _msg,
-      1);
+    throw _msg;
   }
   if ( _info_get ) {
     const
       _libevm_module =
-        require(
+        await import(
           "libevm");
     const
       _rpc_get =
         _libevm_module._rpc_get;
-    target_network =
+    _target_network =
       _rpc_get(
         [ target_network ])[
         target_network];
   }
+  _set(
+    "target",
+    "network",
+    _target_network);
   if ( typeof(
          token_abi_path) == "undefined" ||
        token_abi_path == "" ) {
